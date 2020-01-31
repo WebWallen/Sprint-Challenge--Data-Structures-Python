@@ -43,5 +43,19 @@ class LinkedList:
     return False
 
   def reverse_list(self):
-    # TO BE COMPLETED
-    pass
+    # Assign previous to None (will need to modify its pointers later)
+    previous = None
+    # Assign current to the head
+    current = self.head
+    # While current node has a value...
+    while current is not None:
+      # Add .next_node to current and assign to "next" (starts loop)
+      next = current.next_node # Temp variable to store next (A --> B)
+      # Assign previous to current.next_node (flips order for each node)
+      current.next_node = previous # Flip order to B --> A
+      # Assign current to previous (first step to restart loop)
+      previous = current
+      # Assign next to current (second step to restart loop)
+      current = next
+    # Assign previous to self.head (flips head position to last element)
+    self.head = previous
